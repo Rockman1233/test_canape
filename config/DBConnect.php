@@ -2,7 +2,7 @@
 
 $dsn = 'mysql:host=localhost;dbname=catalog-site';
 $user = 'root';
-$password = '';
+$password = 'root';
 
 try {
     Object::$db = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);

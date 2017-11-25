@@ -8,6 +8,6 @@
 
 return array(
 
-    'indx.php' => 'car/index',
+    'index.php' => 'main/index',
     'admin.php' => 'admin/index',
 );

@@ -6,7 +6,11 @@
  * Time: 22:20
  */
 
-class IndexController extends Controller {
+class MainController extends Controller {
+
+    public function actionIndex(){
+        echo '<br>345';
+
+    }
 
 };
-

@@ -19,12 +19,12 @@ class Route
 
 	}
 
+
     private function getURL()
     {
-        //получаем строку запроса
+        //getting string of request
         if (!empty($_SERVER['REQUEST_URI'])) {
             return trim($_SERVER['REQUEST_URI'], '/');
-
         }
         return null;
     }
@@ -47,18 +47,14 @@ class Route
                 //black magic (change reg exp)
                 $internalRoute = preg_replace("~$uriPattern~","$path","$uri");
 
-
+                //making array with parts of url
                 $segments = explode('/',$internalRoute);
 
-
-                $controllerName = array_shift($segments).'Controller';
-
                 //take name of file with class
-
+                $controllerName = array_shift($segments).'Controller';
                 $controllerName = ucfirst($controllerName);
 
                 //take name of method
-
                 $actionName = 'action'.ucfirst(array_shift($segments));
                 $parametrs = $segments;
 
@@ -78,8 +74,11 @@ class Route
                 {
                     include_once $controllerFile;
                 }
+
                 //create new object
                 $classObject = new $controllerName();
+
+                //send parametrs to method of current controller
                 $result = call_user_func_array(array($classObject, $actionName), $parametrs);
 
                 if($result != NULL){
