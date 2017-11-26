@@ -1,14 +1,32 @@
 <div class="container">
-    <div class="row">
-        <form action="" method="post">
-            <div class="form">
-                <input type="text" class="form-control-static" name="name" placeholder="Название категории">
-                <input type="text" class="form-control-static" name="short_descr" placeholder="Короткое описание">
-                <input type="text" class="form-control-static" name="full_descr" placeholder="Полное описание">
-                <input type="text" class="form-control-static" name="status" placeholder="Гос.номер">
+<div class="form-group">
+    <div class-lg-12>
+        <div class="row">
+            <div class="col-xs-3">
+                <form action="CreateCategory" method="post">
+                    <p class="form">
+                    <p><input type="text" class="form-control-static" name="name" placeholder="Название категории"></p>
+                    <p><input type="text" class="form-control-static" name="short_descr" placeholder="Короткое описание"></p>
+                    <p><textarea name="full_descr" cols="40" rows="5" placeholder="Полное описание"></textarea></p>
+                    <p><input type="checkbox" class="form-control-static" name="status" > - Активная</p>
+                    <button type="submit" class="btn btn-default">Добавить категорию</button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-default">Добавить категорию</button>
-        </form>
-        <br>
+            <div class="col-xs-3">
+                <form action="CreateGood" method="post">
+                    <p class="form">
+                    <p><input type="text" class="form-control-static" name="name" placeholder="Название товара"></p>
+                    <p><input type="text" class="form-control-static" name="short_descr" placeholder="Короткое описание"></p>
+                    //
+                    <p><input type="checkbox" class="form-control-static" name="category" placeholder="Категория"></p>
+                    //
+                    <p><textarea name="full_descr" cols="40" rows="5" placeholder="Полное описание"></textarea></p>
+                    <p><input type="number" class="form-control-static" name="amount" placeholder="Количество"></p>
+                    <p><input type="checkbox" class="form-control-static" name="order"> - На заказ</p>
+                    <p><input type="checkbox" class="form-control-static" name="status"> - Активен</p>
+                    <button type="submit" class="btn btn-default">Добавить товар</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
