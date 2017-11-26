@@ -10,6 +10,7 @@ class View
 {
 
     private $aData = [];
+    public $content;
     private $template;
 
     public function __construct($template)
@@ -31,6 +32,7 @@ class View
         foreach ($this->aData as $sName => $value) {
         }
         include_once $this->template;
+        include_once $this->content;
     }
 
 

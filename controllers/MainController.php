@@ -10,7 +10,6 @@ class MainController extends Controller {
 
     public function actionIndex()
     {
-        $this->view->__construct('IndexView.php');
         //$this->view->addData();
         $this->view->generate();
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Список товаров</title>
+    <title>Welcome to site-catalog</title>
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -21,8 +21,18 @@
     <![endif]-->
 </head>
 <body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li <?php if($_SERVER['REQUEST_URI']=='/admin.php') echo "class=\"active\""?>><a href="../admin.php">Админка</a></li>
+                <li <?php if($_SERVER['REQUEST_URI']=='/index.php') echo "class=\"active\""?>><a href="../index.php">Публичная часть</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-
+<?php include_once $this->content; ?>
 
 
 <!-- 3. Подключить библиотеку jQuery -->
