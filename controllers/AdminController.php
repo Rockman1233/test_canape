@@ -8,8 +8,11 @@
 
 class AdminController extends Controller {
 
-    public function actionIndex(){
-        echo '<br>123';
+    public function actionIndex()
+    {
+        $this->view->__construct('AdminView.php');
+        //$this->view->addData();
+        $this->view->generate();
 
     }
 

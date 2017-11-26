@@ -8,8 +8,11 @@
 
 class MainController extends Controller {
 
-    public function actionIndex(){
-        echo '<br>345';
+    public function actionIndex()
+    {
+        $this->view->__construct('IndexView.php');
+        //$this->view->addData();
+        $this->view->generate();
 
     }
 

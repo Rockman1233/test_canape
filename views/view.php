@@ -33,16 +33,5 @@ class View
         include_once $this->template;
     }
 
-    function generateIn()
-    {
-        /*echo '<pre>';
-        print_r($this->aData);
-        echo '</pre>'; */
-        foreach ($this->aData as $sName => $value) {
-            /*echo '<pre>';
-            print_r($value);
-            echo '</pre>';*/
-        }
-        include $this->aData['temp'];
-    }
+
 }
