@@ -10,7 +10,7 @@ include_once($_SERVER["DOCUMENT_ROOT"].'/models/Category.php');
 include_once($_SERVER["DOCUMENT_ROOT"].'/models/Goods.php');
 class MainController extends Controller {
 
-    public function actionIndex($page)
+    public function actionIndex($page=1)
     {
 
         foreach(Goods::getAllNames($page) as $key => $value)
@@ -24,7 +24,6 @@ class MainController extends Controller {
         };
         $this->view->content = 'IndexView.php';
         $this->view->generate();
-
         //pagination
         $total = Goods::Total();
         $total = $total['COUNT(*)'];
