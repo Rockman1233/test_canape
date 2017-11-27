@@ -22,17 +22,37 @@ class MainController extends Controller {
         {
             $this->view->addData2($key, $value);
         };
+        //pagination
         $total = Goods::Total();
+        //костыль
         $total = $total['COUNT(*)'];
         $pagination = new Pagination("$total", "$page", Goods::SHOW_DEFAULT, '');
         $pag = $pagination->get();
         $this->view->pagination = $pag;
-
+        //make a view
         $this->view->content = 'IndexView.php';
         $this->view->generate();
 
+    }
 
+    public function actionSort($category_id)
+    {
+
+        foreach(Object::CategorySorting($category_id) as $key => $value)
+        {
+            $this->view->addData($key, $value);
+        };
+
+        foreach(Category::getAllNames($page) as $key => $value)
+        {
+            $this->view->addData2($key, $value);
+        };
+
+        //make a view
+        $this->view->content = 'IndexView.php';
+        $this->view->generate();
 
     }
+
 
 };
