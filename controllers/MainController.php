@@ -22,13 +22,15 @@ class MainController extends Controller {
         {
             $this->view->addData2($key, $value);
         };
-        $this->view->content = 'IndexView.php';
-        $this->view->generate();
-        //pagination
         $total = Goods::Total();
         $total = $total['COUNT(*)'];
         $pagination = new Pagination("$total", "$page", Goods::SHOW_DEFAULT, '');
-        print_r($pagination->get());
+        $pag = $pagination->get();
+        $this->view->pagination = $pag;
+
+        $this->view->content = 'IndexView.php';
+        $this->view->generate();
+
 
 
     }

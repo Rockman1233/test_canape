@@ -11,6 +11,7 @@ class View
 
     private $aData = [];
     private $aData2 = [];
+    public $pagination;
     public $content;
     private $template;
 
@@ -19,10 +20,10 @@ class View
         $this->template = $template;
     }
 
-
     function addData($sName, $Value)
     {
         $this->aData[$sName] = $Value;
+
     }
 
     function addData2($sName, $Value)
@@ -32,8 +33,6 @@ class View
 
     function generate()
     {
-        foreach($this->aData as $sName => $value) {
-        }
         include_once $this->template;
         include_once $this->content;
     }

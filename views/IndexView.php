@@ -26,12 +26,12 @@
         <strong>Категории</strong>
         <div class="btn-group">
             <?php foreach ($this->aData2 as $key => $value): ?>
-            <a href="<?php echo $value['id']?>" id="list" class="btn btn-default btn-sm"><?php echo $value['name']?></a>
+            <a href="../<?php echo $value['id']?>" id="list" class="btn btn-default btn-sm"><?php echo $value['name']?></a>
             <?endforeach;?>
         </div>
     </div>
+    <?php echo $this->pagination?>
     <div id="products" class="row list-group">
-
         <?php foreach ($this->aData as $key => $value): ?>
         <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail">

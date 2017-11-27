@@ -67,7 +67,9 @@ abstract class Object{
 
         $class = get_called_class();
         $table = $class::TableName();
-        $oQuery = Object::$db->query("SELECT * FROM {$table}  ORDER BY name LIMIT $count OFFSET $offset");
+        //костыль для списка категорий
+        $oQuery = ($table=='category')?Object::$db->query("SELECT * FROM {$table}  ORDER BY name"):
+                                        Object::$db->query("SELECT * FROM {$table}  ORDER BY name LIMIT $count OFFSET $offset");
         return $oQuery->fetchAll(PDO::FETCH_ASSOC);
     }
 
