@@ -29,12 +29,11 @@ class Goods extends Object {
         $oQuery = Object::$db->prepare("INSERT INTO {$table}(name, short_descr, full_descr, status, amount, order_possible) 
                                         VALUES (:name, :short_descr, :full_descr, :status, :amount, :order)");
         $oQuery->execute(['name' => $name, 'short_descr'=> $short_descr, 'full_descr' => $full_descr, 'status' => $status, 'amount' => $amount, 'order' => $order]);
-
+        //find current good by name
         $current_good = Goods::findByName($name);
-        var_dump($current_good);
-        echo '<br>';
+        //write data into connect table (I'll use foreach because one good could have many categories)
         foreach ($categories as $key => $id){
-            $oQuery = Object::$db->prepare("INSERT INTO category_has_good (good_id, category_id) VALUES (good_id, category_id)");
+            $oQuery = Object::$db->prepare("INSERT INTO category_has_good (good, category) VALUES (:good_id, :category_id)");
             $oQuery->execute(['good_id' => intval($current_good->id), 'category_id' => intval($id)]);
         }
     }
