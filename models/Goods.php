@@ -8,12 +8,20 @@
 
 class Goods extends Object {
 
+    public $id;
+    public $name;
+    public $short_descr;
+    public $full_descr;
+    public $status;
+    public $amount;
+    public $order;
+
     static function TableName()
     {
         return 'goods';
     }
 
-    public static function createNew($name, $short_descr, $full_descr, $status, $amount, $order){
+    public static function createNew($name, $short_descr, $full_descr, $status, $amount, $order, $categories){
 
         /** @var Object $class */
         $class = get_called_class();
@@ -22,5 +30,12 @@ class Goods extends Object {
                                         VALUES (:name, :short_descr, :full_descr, :status, :amount, :order)");
         $oQuery->execute(['name' => $name, 'short_descr'=> $short_descr, 'full_descr' => $full_descr, 'status' => $status, 'amount' => $amount, 'order' => $order]);
 
+        $current_good = Goods::findByName($name);
+        var_dump($current_good);
+        echo '<br>';
+        foreach ($categories as $key => $id){
+            $oQuery = Object::$db->prepare("INSERT INTO category_has_good (good_id, category_id) VALUES (good_id, category_id)");
+            $oQuery->execute(['good_id' => intval($current_good->id), 'category_id' => intval($id)]);
+        }
     }
 };

@@ -6,6 +6,8 @@ abstract class Object{
 
     /** @var  PDO */
     static $db;
+    public $good;
+    public $category;
 
     public function __construct($params = [])
     {
@@ -19,12 +21,13 @@ abstract class Object{
 
     abstract static function TableName();
 
+
     /**
      * @param integer $id
      * @return
      */
-    public static function findById($id){
-
+    public static function findById($id)
+    {
         /** @var Object $class */
         $class = get_called_class();
         $table = $class::TableName();
@@ -35,6 +38,38 @@ abstract class Object{
 
         return $aRes? new $class($aRes):null;
     }
+
+    public static function findByName($name)
+    {
+        /** @var Object $class */
+        $class = get_called_class();
+        $table = $class::TableName();
+
+        $oQuery = Object::$db->prepare("SELECT * FROM {$table} WHERE name=:name");
+        $oQuery->execute(['name' => $name]);
+        $aRes = $oQuery->fetch(PDO::FETCH_ASSOC);
+
+        return $aRes? new $class($aRes):null;
+    }
+
+    public static function Total()
+    {
+        $class = get_called_class();
+        $table = $class::TableName();
+        $oQuery = Object::$db->query("SELECT COUNT(*) FROM {$table}");
+        return $oQuery->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function GetAllNames()
+    {
+        $class = get_called_class();
+        $table = $class::TableName();
+        $oQuery = Object::$db->query("SELECT name, id FROM {$table}");
+        return $oQuery->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
 
 
 }

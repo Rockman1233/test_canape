@@ -22,14 +22,14 @@ class View
     function addData($sName, $Value){
         $this->aData[$sName] = $Value;
         /*echo '<pre>';
-        print_r($Value);
+        print_r($Value['name']);
         echo '</pre>';*/
 
     }
 
     function generate()
     {
-        foreach ($this->aData as $sName => $value) {
+        foreach($this->aData as $sName => $value) {
         }
         include_once $this->template;
         include_once $this->content;
