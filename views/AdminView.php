@@ -18,7 +18,7 @@
                     <p><input type="text" class="form-control-static" name="name" placeholder="Название товара"></p>
                     <p><input type="text" class="form-control-static" name="short_descr" placeholder="Короткое описание"></p>
                     <?php foreach ($this->aData as $key => $value): ?>
-                    <input type="checkbox" class="form-control-static" name="<? echo $value['id'] ?>"><?php echo $value['name']?>
+                    <?php if($value['status']==1): ?><input type="checkbox" class="form-control-static" name="<? echo $value['id'] ?>"><?php echo $value['name']?><? endif;?>
                     <? endforeach; ?>
                     <p><textarea name="full_descr" cols="40" rows="5" placeholder="Полное описание"></textarea></p>
                     <p><input type="number" class="form-control-static" name="amount" placeholder="Количество"></p>
