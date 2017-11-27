@@ -6,8 +6,7 @@ abstract class Object{
 
     /** @var  PDO */
     static $db;
-    public $good;
-    public $category;
+    const SHOW_DEFAULT = 3;
 
     public function __construct($params = [])
     {
@@ -60,11 +59,15 @@ abstract class Object{
         return $oQuery->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function GetAllNames()
+    public static function GetAllNames($page)
     {
+        $page = intval($page);
+        $count = Object::SHOW_DEFAULT;
+        $offset = $count * ($page - 1);
+
         $class = get_called_class();
         $table = $class::TableName();
-        $oQuery = Object::$db->query("SELECT name, id FROM {$table}");
+        $oQuery = Object::$db->query("SELECT * FROM {$table}  ORDER BY name LIMIT $count OFFSET $offset");
         return $oQuery->fetchAll(PDO::FETCH_ASSOC);
     }
 

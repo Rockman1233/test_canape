@@ -15,7 +15,7 @@ class Controller {
         $this->view = new View($template);
     }
 
-    public function actionIndex() {
+    public function actionIndex($page) {
 
     }
 

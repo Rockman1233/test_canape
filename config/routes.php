@@ -8,7 +8,7 @@
 
 return array(
 
-    'index.php' => 'main/index',
+    'index.php' => 'main/index/1',
     'admin.php' => 'admin/index',
     'CreateCategory' => 'admin/createcat',
     'CreateGood' => 'admin/creategood'

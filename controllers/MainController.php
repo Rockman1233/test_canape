@@ -6,12 +6,31 @@
  * Time: 22:20
  */
 
+include_once($_SERVER["DOCUMENT_ROOT"].'/models/Category.php');
+include_once($_SERVER["DOCUMENT_ROOT"].'/models/Goods.php');
 class MainController extends Controller {
 
-    public function actionIndex()
+    public function actionIndex($page)
     {
-        //$this->view->addData();
+
+        foreach(Goods::getAllNames($page) as $key => $value)
+        {
+            $this->view->addData($key, $value);
+        };
+
+        foreach(Category::getAllNames($page) as $key => $value)
+        {
+            $this->view->addData2($key, $value);
+        };
+        $this->view->content = 'IndexView.php';
         $this->view->generate();
+
+        //pagination
+        $total = Goods::Total();
+        $total = $total['COUNT(*)'];
+        $pagination = new Pagination("$total", "$page", Goods::SHOW_DEFAULT, '');
+        print_r($pagination->get());
+
 
     }
 

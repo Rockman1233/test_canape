@@ -10,6 +10,7 @@ class View
 {
 
     private $aData = [];
+    private $aData2 = [];
     public $content;
     private $template;
 
@@ -19,12 +20,14 @@ class View
     }
 
 
-    function addData($sName, $Value){
+    function addData($sName, $Value)
+    {
         $this->aData[$sName] = $Value;
-        /*echo '<pre>';
-        print_r($Value['name']);
-        echo '</pre>';*/
+    }
 
+    function addData2($sName, $Value)
+    {
+        $this->aData2[$sName] = $Value;
     }
 
     function generate()

@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 include('config/route.php');
 include('models/Main.php');
 include('config/DBConnect.php');
+include('config/Pagination.php');
 include('controllers/Controller.php');
 include('views/view.php');
 

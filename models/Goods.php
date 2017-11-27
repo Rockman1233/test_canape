@@ -21,6 +21,7 @@ class Goods extends Object {
         return 'goods';
     }
 
+
     public static function createNew($name, $short_descr, $full_descr, $status, $amount, $order, $categories){
 
         /** @var Object $class */
