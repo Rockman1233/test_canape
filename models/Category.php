@@ -8,6 +8,12 @@
 
 class Category extends Object {
 
+    public $id;
+    public $name;
+    public $short_descr;
+    public $full_descr;
+    public $status;
+
     static function TableName()
     {
         return 'category';

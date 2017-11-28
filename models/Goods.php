@@ -14,7 +14,7 @@ class Goods extends Object {
     public $full_descr;
     public $status;
     public $amount;
-    public $order;
+    public $order_possible;
 
     static function TableName()
     {
@@ -38,4 +38,13 @@ class Goods extends Object {
             $oQuery->execute(['good_id' => intval($current_good->id), 'category_id' => intval($id)]);
         }
     }
+
+    public function getCategory()
+    {
+        $oQuery = Object::$db->query("SELECT category.name, category.id
+                                                FROM category_has_good JOIN category ON category.id = category_has_good.category WHERE good=$this->id");
+        return $oQuery->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
 };

@@ -8,6 +8,7 @@
 
 include_once($_SERVER["DOCUMENT_ROOT"].'/models/Category.php');
 include_once($_SERVER["DOCUMENT_ROOT"].'/models/Goods.php');
+
 class MainController extends Controller {
 
     public function actionIndex($page=1)
@@ -24,8 +25,7 @@ class MainController extends Controller {
         };
         //pagination
         $total = Goods::Total();
-        //костыль
-        $total = $total['COUNT(*)'];
+        $total = $total['COUNT(*)']; //костыль
         $pagination = new Pagination("$total", "$page", Goods::SHOW_DEFAULT, '');
         $pag = $pagination->get();
         $this->view->pagination = $pag;
@@ -53,6 +53,21 @@ class MainController extends Controller {
         $this->view->generate();
 
     }
+
+    public function actionCurrent($good_id)
+    {
+        $current_good = Goods::findById($good_id);
+        $categories = $current_good->getCategory();
+        print_r($categories);
+        $this->view->addData('categories', $categories);
+        $this->view->addData('current_good', $current_good);
+        //make a view
+        $this->view->content = 'CurrentView.php';
+        $this->view->generate();
+
+    }
+
+
 
 
 };

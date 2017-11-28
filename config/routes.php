@@ -12,5 +12,6 @@ return array(
     'admin.php' => 'admin/index',
     'CreateCategory' => 'admin/createcat',
     'CreateGood' => 'admin/creategood',
-    'sortlist' => 'main/sort'
+    'sortlist' => 'main/sort',
+    'current_good' => 'main/current',
 );

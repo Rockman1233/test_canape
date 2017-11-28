@@ -76,7 +76,7 @@ abstract class Object{
     public static function CategorySorting($category_id)
     {
         //костыль для списка категорий
-        $oQuery = Object::$db->query("SELECT goods.name, goods.short_descr, goods.full_descr, goods.status, goods.amount, goods.order_possible 
+        $oQuery = Object::$db->query("SELECT goods.name, goods.short_descr, goods.full_descr, goods.status, goods.amount, goods.order_possible, goods.id 
                                                 FROM category_has_good JOIN goods ON goods.id = category_has_good.good WHERE category=$category_id");
         return $oQuery->fetchAll(PDO::FETCH_ASSOC);
     }
