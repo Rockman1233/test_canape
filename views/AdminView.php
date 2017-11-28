@@ -30,3 +30,31 @@
         </div>
     </div>
 </div>
+<a href="#goods">Список товаров</a>
+<h3>Список всех категорий:</h3>
+<div class="container">
+    <table class="table table-bordered">
+        <?php foreach ($this->aData as $key => $value): ?>
+        <thead>
+        <tr>
+            <th>ID Категории</th>
+            <th>Категория</th>
+            <th>Короткое описание</th>
+            <th>Полное описание</th>
+            <th>Активность</th>
+            <th>Редактировать</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><?php echo $value['id'] ?></td>
+            <td><?php echo $value['name'] ?></td>
+            <td><?php echo $value['short_descr'] ?></td>
+            <td><?php echo $value['full_descr'] ?></td>
+            <td><?php echo $value['status'] ?></td>
+            <td><a href="#"><span class="glyphicon glyphicon-list fa-2x"></a></td>
+        </tr>
+        </tbody>
+        <? endforeach; ?>
+    </table>
+</div>

@@ -35,10 +35,6 @@ class Route
         $uri = $this->getURL();
         echo "Строка запроса - ".$uri;
 
-        if(!$uri){
-            $controllerFile = $_SERVER['DOCUMENT_ROOT'].'/controllers/MainController.php';
-
-        }
 
         foreach ($this->aRouts as $uriPattern => $path) {
             if (preg_match("~$uriPattern~",$uri)) {

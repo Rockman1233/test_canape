@@ -3,6 +3,7 @@
         <strong>Категории</strong>
         <div class="btn-group">
             <ul class="nav menu nav-pills topmenu">
+            <li id="list" class="btn btn-default btn-sm"><a href="../index.php">Все</a></li>
             <?php foreach ($this->aData2 as $key => $value): ?>
             <li <?php if($_SERVER['REQUEST_URI']=="/sortlist/".$value['id']) echo "class=\"active\""?>><a href="../sortlist/<?php echo $value['id']?>" id="list" class="btn btn-default btn-sm" ><?php echo $value['name']?></a></li>
             <?endforeach;?>

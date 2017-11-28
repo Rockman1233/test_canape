@@ -35,10 +35,11 @@
                                         <a href="../sortlist/<?php echo $value['id']?>"><?php echo $value['name']?></a>,
                                         <? endforeach; ?>
                                         </td>
+                                    </tr><?php if ($this->aData['current_good']->order_possible ==1): ?>
+                                        <td>Сделать заказ:</td>
+                                        <td><a href="#">Нажми</a> POST форма</td>
+                                        <?endif;?>
                                     </tr>
-                                            <td>Сделать заказ:</td>
-                                            <td><a href="#">Нажми</a> POST форма</td>
-                                        </tr>
                                     </tbody>
                                 </table>
                         </div>
