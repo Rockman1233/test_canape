@@ -57,7 +57,7 @@ class MainController extends Controller {
     public function actionCurrent($good_id)
     {
         $current_good = Goods::findById($good_id);
-        //if request good isnt exists -> redirect to 404
+        //if request good isn't exists -> redirect to 404
         if(!$current_good){return include_once($_SERVER["DOCUMENT_ROOT"].'/views/404.php');}
         $categories = $current_good->getCategory();
         print_r($categories);

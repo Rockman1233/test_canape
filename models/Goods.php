@@ -37,6 +37,7 @@ class Goods extends Object {
             $oQuery = Object::$db->prepare("INSERT INTO category_has_good (good, category) VALUES (:good_id, :category_id)");
             $oQuery->execute(['good_id' => intval($current_good->id), 'category_id' => intval($id)]);
         }
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
     public function getCategory()

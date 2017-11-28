@@ -30,6 +30,7 @@ class AdminController extends Controller {
     {
         // if POST[status]'on' set '1' else '0'
         Category::createNew($_POST['name'],$_POST['short_descr'],$_POST['full_descr'],(isset($_POST['status']))?1:-1);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
 
     }
 
@@ -49,6 +50,7 @@ class AdminController extends Controller {
         }
         $current_obj->edit();
 
+
     }
 
     public function actionCreateGood()
@@ -58,6 +60,7 @@ class AdminController extends Controller {
         $categories_of_new_good = preg_grep('/^[0-9]/', $keys);
         // if POST[status]'on' set '1' else '0'
         Goods::createNew($_POST['name'],$_POST['short_descr'],$_POST['full_descr'],(isset($_POST['status']))?1:-1, intval($_POST['amount']),(isset($_POST['order']))?1:-1, $categories_of_new_good);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
 };
