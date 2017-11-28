@@ -39,7 +39,7 @@
         <tr>
             <th>ID Категории</th>
             <th>Категория</th>
-            <th>Короткое описание</th>
+            <th>Краткое описание</th>
             <th>Полное описание</th>
             <th>Активность</th>
             <th>Редактировать</th>
@@ -52,9 +52,43 @@
             <td><?php echo $value['short_descr'] ?></td>
             <td><?php echo $value['full_descr'] ?></td>
             <td><?php echo $value['status'] ?></td>
-            <td><a href="#"><span class="glyphicon glyphicon-list fa-2x"></a></td>
+            <td><a href="../edit/<?php echo $value['id'] ?>/Category"><span class="glyphicon glyphicon-list fa-2x"></a></td>
         </tr>
         </tbody>
+        <? endforeach; ?>
+    </table>
+</div>
+
+<hr id="goods" style="height:5px;border:none;color:#333;background-color:red;" />
+
+<h3 >Список всех Товаров:</h3>
+<div class="container">
+    <table class="table table-bordered">
+        <?php foreach ($this->aData2 as $key => $value): ?>
+            <thead>
+            <tr>
+                <th>ID Товара</th>
+                <th>Категория</th>
+                <th>Краткое описание</th>
+                <th>Полное описание</th>
+                <th>Активность</th>
+                <th>Количество</th>
+                <th>Возможность заказа</th>
+                <th>Редактировать</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><?php echo $value['id'] ?></td>
+                <td><?php echo $value['name'] ?></td>
+                <td><?php echo $value['short_descr'] ?></td>
+                <td><?php echo $value['full_descr'] ?></td>
+                <td><?php echo $value['status'] ?></td>
+                <td><?php echo $value['amount'] ?></td>
+                <td><?php echo $value['order_possible'] ?></td>
+                <td><a href="../edit/<?php echo $value['id'] ?>/Goods"><span class="glyphicon glyphicon-list fa-2x"></a></td>
+            </tr>
+            </tbody>
         <? endforeach; ?>
     </table>
 </div>

@@ -46,5 +46,27 @@ class Goods extends Object {
         return $oQuery->fetchAll(PDO::FETCH_ASSOC);
 
     }
+    public function edit() {
+        echo 'goods';
+        $prepare = self::$db->prepare(
+            'UPDATE Goods SET
+                        name = :name, 
+                        short_descr = :short_descr, 
+                        full_descr = :full_descr,
+                        status = :status,
+                        amount = :amount,
+                        order_possible = :order_possible
+                        WHERE
+                        id=:id');
+        $prepare->execute(
+            array(
+                'id' => $this->id,
+                'name'=> $this->name,
+                'short_descr'=> $this->short_descr,
+                'full_descr'=> $this->full_descr,
+                'status'=> $this->status,
+                'amount'=> $this->amount,
+                'order_possible'=> $this->order_possible
+            ));
 
-};
+}};

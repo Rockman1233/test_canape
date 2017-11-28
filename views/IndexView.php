@@ -3,9 +3,11 @@
         <strong>Категории</strong>
         <div class="btn-group">
             <ul class="nav menu nav-pills topmenu">
-            <li id="list" class="btn btn-default btn-sm"><a href="../index.php">Все</a></li>
+            <li id="list" class="btn btn-default btn-sm"><a href="../../index.php">Все</a></li>
             <?php foreach ($this->aData2 as $key => $value): ?>
+            <?php if($value['status']>0): ?>
             <li <?php if($_SERVER['REQUEST_URI']=="/sortlist/".$value['id']) echo "class=\"active\""?>><a href="../sortlist/<?php echo $value['id']?>" id="list" class="btn btn-default btn-sm" ><?php echo $value['name']?></a></li>
+            <?endif;?>
             <?endforeach;?>
             </ul>
         </div>
@@ -23,9 +25,9 @@
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
                             <p class="lead"><?php if(($value['amount']>0)&&($value['order_possible']==1)):?>В наличии - <?php echo $value['amount']?> шт.<?endif;?>
-                                            <?php if(($value['amount']>0)&&($value['order_possible']==0)):?>В наличии - <?php echo $value['amount']?> шт.(больше не будет)<?endif;?>
+                                            <?php if(($value['amount']>0)&&($value['order_possible']==-1)):?>В наличии - <?php echo $value['amount']?> шт.(больше не будет)<?endif;?>
                                             <?php if(($value['amount']==0)&&($value['order_possible']==1)):?>Доступен для заказа <?php echo $value['amount']?> шт.<?endif;?>
-                                            <?php if(($value['amount']==0)&&($value['order_possible']==0)):?>Нет и не будет <?php echo $value['amount']?> шт.<?endif;?>
+                                            <?php if(($value['amount']==0)&&($value['order_possible']==-1)):?>Нет и не будет <?php echo $value['amount']?> шт.<?endif;?>
                             </p>
                         </div>
                         <div class="col-xs-12 col-md-6">

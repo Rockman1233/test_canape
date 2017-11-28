@@ -45,6 +45,12 @@ span.itemPrice {
   color: #FA5B58;
 }
 
+.half-rule {
+  margin-left: 0;
+  text-align: center;
+  width: 50%;
+  color: #FA5B58;
+}
 
 /*----------------------
 ##star Rating Styles

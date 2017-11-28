@@ -13,7 +13,7 @@ class View
     private $aData2 = [];
     public $pagination;
     public $content;
-    private $template;
+    public $template;
 
     public function __construct($template)
     {

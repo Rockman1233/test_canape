@@ -29,4 +29,26 @@ class Category extends Object {
         $oQuery->execute(['name' => $name, 'short_descr'=> $short_descr, 'full_descr' => $full_descr, 'status' => $status]);
 
     }
+
+    public function edit() {
+
+        $prepare = self::$db->prepare(
+            'UPDATE Category SET
+                        name = :name, 
+                        short_descr = :short_descr, 
+                        full_descr = :full_descr,
+                        status = :status
+                        WHERE
+                        id=:id');
+
+        $prepare->execute(
+            array(
+                'id' => $this->id,
+                'name'=> $this->name,
+                'short_descr'=> $this->short_descr,
+                'full_descr'=> $this->full_descr,
+                'status'=> $this->status
+            ));
+
+}
 }

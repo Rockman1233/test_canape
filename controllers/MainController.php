@@ -43,7 +43,7 @@ class MainController extends Controller {
             $this->view->addData($key, $value);
         };
 
-        foreach(Category::getAllNames($page) as $key => $value)
+        foreach(Category::getAllNames() as $key => $value)
         {
             $this->view->addData2($key, $value);
         };
