@@ -60,7 +60,6 @@ class MainController extends Controller {
         //if request good isn't exists -> redirect to 404
         if(!$current_good){return include_once($_SERVER["DOCUMENT_ROOT"].'/views/404.php');}
         $categories = $current_good->getCategory();
-        print_r($categories);
         $this->view->addData('categories', $categories);
         $this->view->addData('current_good', $current_good);
         //make a view

@@ -17,6 +17,7 @@
                     <p class="form">
                     <p><input type="text" class="form-control-static" name="name" placeholder="Название товара"></p>
                     <p><input type="text" class="form-control-static" name="short_descr" placeholder="Короткое описание"></p>
+                    Список активных категорий:<br>
                     <?php foreach ($this->aData as $key => $value): ?>
                     <?php if($value['status']==1): ?><input type="checkbox" class="form-control-static" name="<? echo $value['id'] ?>"><?php echo $value['name']?><? endif;?>
                     <? endforeach; ?>
@@ -31,6 +32,7 @@
     </div>
 </div>
 <a href="#goods">Список товаров</a>
+    <p> Состояние активного товара(категории) 1, неактивного -1</p>
 <h3>Список всех категорий:</h3>
 <div class="container">
     <table class="table table-bordered">

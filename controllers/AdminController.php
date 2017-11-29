@@ -37,7 +37,6 @@ class AdminController extends Controller {
     public function actionEdit($cat_id,$object)
     {
         $current_obj = $object::findById($cat_id);
-        var_dump($current_obj);
         $this->view->addData('obj_type', $object);
         $this->view->addData('cur_cat', $current_obj);
         $this->view->content = 'EditView.php';

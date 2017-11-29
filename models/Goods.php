@@ -48,7 +48,6 @@ class Goods extends Object {
 
     }
     public function edit() {
-        echo 'goods';
         $prepare = self::$db->prepare(
             'UPDATE Goods SET
                         name = :name, 

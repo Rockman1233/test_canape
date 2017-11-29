@@ -14,8 +14,6 @@
                                         <td>Короткое описание:</td>
                                         <td><?php echo $this->aData['current_good']->short_descr ?></td>
                                     </tr>
-
-                                    <tr>
                                     <tr>
                                         <td>Полное описание:</td>
                                         <td><?php echo $this->aData['current_good']->full_descr ?></td>
