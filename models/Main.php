@@ -7,7 +7,7 @@ abstract class Object
 
     /** @var  PDO */
     static $db;
-    const SHOW_DEFAULT = 3;
+    const SHOW_DEFAULT = 3; //pagination - How many goods do you want to see on page?
 
     public function __construct($params = [])
     {
