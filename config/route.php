@@ -34,6 +34,7 @@ class Route
 
         $uri = $this->getURL();
         //echo "Строка запроса - ".$uri;
+        //if url unknown trow 404
         if(!array_key_exists(trim($uri),$this->aRouts))
         {
             return include_once($_SERVER["DOCUMENT_ROOT"].'/views/404.php');
