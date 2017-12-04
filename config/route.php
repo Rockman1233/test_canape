@@ -36,9 +36,22 @@ class Route
         //echo "Строка запроса - ".$uri;
 
 
+
+        //адский костыль где я перебираю возможные адреса для того чтобы если не обнаружу подходящее выкинуть 404
+        $try = 0;
+        foreach ($this->aRouts as $uriPattern =>$path)
+            {
+                $d = preg_match("~$uriPattern/[0-9]|$uriPattern$~",$uri);
+                $try =$try + $d;
+            };
+        if ($try==0)
+        {
+            include_once($_SERVER["DOCUMENT_ROOT"].'/views/404.php');
+        }
+
+
         foreach ($this->aRouts as $uriPattern => $path) {
             if (preg_match("~$uriPattern~",$uri)) {
-
 
                 //black magic (change reg exp)
                 $internalRoute = preg_replace("~$uriPattern~","$path","$uri");
@@ -54,13 +67,6 @@ class Route
                 $actionName = 'action'.ucfirst(array_shift($segments));
                 $parametrs = $segments;
 
-
-                if($controllerName=='Controller'&&$actionName=='action')
-                {
-                    $controllerName = 'MainController';
-                    $actionName='actionIndex';
-
-                }
                 //echo '<br> Контроллер - '.$controllerName;
                 //echo '<br> Метод контроллера - '.$actionName;
 
@@ -70,6 +76,7 @@ class Route
                 {
                     include_once $controllerFile;
                 }
+
 
                 //create new object
                 $classObject = new $controllerName();
@@ -82,7 +89,7 @@ class Route
                 }
 
             }
+
         }
     }
-    
 }

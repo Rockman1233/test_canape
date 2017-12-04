@@ -33,7 +33,7 @@
                             </p>
                         </div>
                         <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="../current_good/<?php echo $value['id']?>">Подробнее</a>
+                            <a class="btn btn-success" href="../../current_good/<?php echo $value['id']?>">Подробнее</a>
                         </div>
                     </div>
                 </div>

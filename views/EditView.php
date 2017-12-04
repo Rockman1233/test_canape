@@ -26,7 +26,7 @@
                                         <td><input type="text" class="form-control-static" name="full_descr" placeholder="<?php echo $this->aData['cur_cat']->full_descr ?>"></td>
                                     </tr>
                                     <tr>
-                                        <td>Количество</td>
+                                        <td>Активность</td>
                                         <td><input type="text" class="form-control-static" name="status" placeholder="<?php echo $this->aData['cur_cat']->status ?>"></td>
                                     </tr>
                                     <? if(get_class($this->aData['cur_cat'])=='Goods'):?>
