@@ -34,9 +34,13 @@ class Route
 
         $uri = $this->getURL();
         //echo "Строка запроса - ".$uri;
-
+        if(!array_key_exists(trim($uri),$this->aRouts))
+        {
+            return include_once($_SERVER["DOCUMENT_ROOT"].'/views/404.php');
+        };
 
         foreach ($this->aRouts as $uriPattern => $path) {
+
             if (preg_match("~$uriPattern~",$uri)) {
 
 
@@ -82,6 +86,8 @@ class Route
                 }
 
             }
+
+
         }
     }
     
