@@ -50,5 +50,22 @@ class Category extends Object {
                 'status'=> $this->status
             ));
 
-}
+    }
+
+    public static function CategorySorting($category_id, $page)
+    {
+        $page = intval($page);
+        $count = Object::SHOW_DEFAULT;
+        $offset = $count * ($page - 1);
+        $oQuery = Object::$db->query("SELECT goods.name, goods.short_descr, goods.full_descr, goods.status, goods.amount, goods.order_possible, goods.id 
+                                                FROM category_has_good JOIN goods ON goods.id = category_has_good.good WHERE category=$category_id AND status>0
+                                                ORDER BY name LIMIT $count OFFSET $offset");
+        return $oQuery->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function TotalCategorySorting($category_id)
+    {
+        $oQuery = Object::$db->query("SELECT COUNT(*) FROM category_has_good JOIN goods ON goods.id = category_has_good.good WHERE category=$category_id AND status>0");
+        return $oQuery->fetch(PDO::FETCH_ASSOC);
+    }
 }

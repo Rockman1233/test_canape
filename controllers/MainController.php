@@ -19,7 +19,7 @@ class MainController extends Controller {
             $this->view->addData($key, $value);
         };
 
-        foreach(Category::getAllNames($page) as $key => $value)
+        foreach(Category::getAllNames_without_pagination(true) as $key => $value)
         {
             $this->view->addData2($key, $value);
         };
@@ -35,19 +35,25 @@ class MainController extends Controller {
 
     }
 
-    public function actionSort($category_id)
+    public function actionSort($category_id, $page=1)
     {
-
-        foreach(Object::CategorySorting($category_id) as $key => $value)
+        //небольшой костыль для вырезки номера из пагинации
+        $page = preg_replace('/page_/', '', $page);
+        $total = Category::TotalCategorySorting($category_id);
+        $total = $total['COUNT(*)']; //костыль
+        foreach(Category::CategorySorting($category_id, $page) as $key => $value)
         {
             $this->view->addData($key, $value);
         };
 
-        foreach(Category::getAllNames() as $key => $value)
+        foreach(Category::getAllNames_without_pagination(true) as $key => $value)
         {
             $this->view->addData2($key, $value);
         };
-
+        //for indentification string adding index 'page'
+        $pagination = new Pagination($total, "$page", Goods::SHOW_DEFAULT, 'page_');
+        $pag = $pagination->get();
+        $this->view->pagination = $pag;
         //make a view
         $this->view->content = 'IndexView.php';
         $this->view->generate();

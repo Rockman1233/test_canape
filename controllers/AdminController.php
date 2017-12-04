@@ -13,12 +13,12 @@ class AdminController extends Controller {
 
     public function actionIndex()
     {
-        foreach(Category::getAllNames_without_pagination() as $key => $value)
+        foreach(Category::getAllNames_without_pagination(false) as $key => $value)
         {
             $this->view->addData($key, $value);
         };
 
-        foreach(Goods::getAllNames_without_pagination() as $key => $value)
+        foreach(Goods::getAllNames_without_pagination(false) as $key => $value)
         {
             $this->view->addData2($key, $value);
         };

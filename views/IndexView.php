@@ -6,7 +6,7 @@
             <li id="list" class="btn btn-default btn-sm"><a href="../../index.php">Все</a></li>
             <?php foreach ($this->aData2 as $key => $value): ?>
             <?php if($value['status']>0): ?>
-            <li <?php if($_SERVER['REQUEST_URI']=="/sortlist/".$value['id']) echo "class=\"active\""?>><a href="../sortlist/<?php echo $value['id']?>" id="list" class="btn btn-default btn-sm" ><?php echo $value['name']?></a></li>
+            <li <?php if($_SERVER['REQUEST_URI']=="/sortlist/..".$value['id']) echo "class=\"active\""?>><a href="../../sortlist/<?php echo $value['id']?>" id="list" class="btn btn-default btn-sm" ><?php echo $value['name']?></a></li>
             <?endif;?>
             <?endforeach;?>
             </ul>

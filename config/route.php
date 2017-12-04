@@ -33,7 +33,7 @@ class Route
 	public function start() {
 
         $uri = $this->getURL();
-        //echo "Строка запроса - ".$uri;
+        echo "Строка запроса - ".$uri;
 
 
         foreach ($this->aRouts as $uriPattern => $path) {
@@ -61,8 +61,8 @@ class Route
                     $actionName='actionIndex';
 
                 }
-                //echo '<br> Контроллер - '.$controllerName;
-                //echo '<br> Метод контроллера - '.$actionName;
+                echo '<br> Контроллер - '.$controllerName;
+                echo '<br> Метод контроллера - '.$actionName;
 
                 //connect files
                 $controllerFile = $_SERVER['DOCUMENT_ROOT'].'/controllers/'.$controllerName.'.php';

@@ -64,34 +64,23 @@ abstract class Object
         $page = intval($page);
         $count = Object::SHOW_DEFAULT;
         $offset = $count * ($page - 1);
-
         $class = get_called_class();
         $table = $class::TableName();
         //костыль для списка категорий
-        $oQuery = ($table == 'category') ? Object::$db->query("SELECT * FROM {$table}  ORDER BY name") :
-            Object::$db->query("SELECT * FROM {$table} WHERE status>0 ORDER BY name LIMIT $count OFFSET $offset");
+        $oQuery = Object::$db->query("SELECT * FROM {$table} WHERE status>0 ORDER BY name LIMIT $count OFFSET $offset");
         return $oQuery->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function getAllNames_without_pagination()
+    public static function getAllNames_without_pagination($only_active = true)
     {
         $class = get_called_class();
         $table = $class::TableName();
-        $oQuery = Object::$db->query("SELECT * FROM {$table}  ORDER BY name");
+        $oQuery =  ($only_active)?Object::$db->query("SELECT * FROM {$table} WHERE status>0  ORDER BY name"):
+                                  Object::$db->query("SELECT * FROM {$table} ORDER BY name");
         return $oQuery->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
-
-
-    public static function CategorySorting($category_id)
-    {
-
-        $oQuery = Object::$db->query("SELECT goods.name, goods.short_descr, goods.full_descr, goods.status, goods.amount, goods.order_possible, goods.id 
-                                                FROM category_has_good JOIN goods ON goods.id = category_has_good.good WHERE category=$category_id AND status>0
-                                                ORDER BY name");
-        return $oQuery->fetchAll(PDO::FETCH_ASSOC);
-    }
 
 
 }
