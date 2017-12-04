@@ -36,7 +36,6 @@ class Route
         //echo "Строка запроса - ".$uri;
 
 
-
         //адский костыль где я перебираю возможные адреса для того чтобы если не обнаружу подходящее выкинуть 404
         $try = 0;
         foreach ($this->aRouts as $uriPattern =>$path)
@@ -51,6 +50,7 @@ class Route
 
 
         foreach ($this->aRouts as $uriPattern => $path) {
+
             if (preg_match("~$uriPattern~",$uri)) {
 
                 //black magic (change reg exp)
